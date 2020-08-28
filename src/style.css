@@ -15,10 +15,18 @@
   margin: 0 20px;
 }
 
+#search-submit:hover,
+#currentButton:hover {
+  box-shadow: 5px 5px 10px rgb(92, 139, 209);
+  color: rgb(92, 139, 209);
+  background-color: #fef9d7;
+}
+
 form {
   display: inline;
 }
-button {
+
+#currentButton {
   border: 1px solid;
   border-radius: 4px;
   background-color: rgb(92, 139, 209);
