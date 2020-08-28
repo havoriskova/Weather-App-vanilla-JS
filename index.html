@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Future Weather App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link href="src/style.css" />
+    <script src="https://kit.fontawesome.com/c29f7c6f91.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card card-weather">
+            <div class="card-body card-body-weather">
+
+
+                <form id="search-form">
+                    <input type="text" placeholder="type a city" autofocus="on" id="input-city-form" />
+
+                    <input type="submit" id="search-submit" value="Search" />
+                </form> <button id="currentButton">Current</button>
+
+                <div class="card card-main-weather">
+                    <div class="card-body card-body-main-weather">
+                        <div class="row">
+                            <div class="col-6">
+                                <h1 id="heading-with-city"> Prag </h1>
+                                <h2> <span id="number"> 19 </span><sup id="celsius"> °C </sup> </h2>
+                                <h3 id="description">partly cloudy</h3>
+                                <h4 class="heading-with-date"> date </h4>
+                            </div>
+                            <div class="col-6">
+                                <h5 class="image-weather"> <i class="fas fa-cloud-sun"></i> </h5>
+                            </div>
+                        </div>
+
+                        <div class="row" id="barWithOtherInfo">
+                            <div class="col-3"> <span class="high-temperature"> <i class="fas fa-temperature-high"></i>
+                                    21°C </span> </div>
+                            <div class="col-3"> <span class="low-temperature"> <i class="fas fa-temperature-low"></i>
+                                    15°C </span></div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> <span class="rain">20</span> %</div>
+                            <div class="col-3"> <i class="fas fa-wind"></i> <span class="wind">50</span> km/h</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Daily Forecast
+                <ul>
+                    <li>
+                        <div class="row">
+                            <div class="col-3">
+                                Mon </div>
+                            <div class="col-3">
+                                <i class="fas fa-cloud-showers-heavy"></i> </div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> 5% </div>
+                            <div class="col-3"> 20°C | 15°C </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row">
+                            <div class="col-3">
+                                Tue </div>
+                            <div class="col-3"> <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> 10% </div>
+                            <div class="col-3"> 21°C | 17°C </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row">
+                            <div class="col-3">
+                                Wed </div>
+                            <div class="col-3"> <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> 5% </div>
+                            <div class="col-3"> 23°C | 18°C </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row">
+                            <div class="col-3">
+                                Thu </div>
+                            <div class="col-3"> <i class="fas fa-sun"></i> </div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> 7% </div>
+                            <div class="col-3"> 19°C | 15°C </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row">
+                            <div class="col-3">
+                                Fri </div>
+                            <div class="col-3"> <i class="fas fa-cloud"></i> </div>
+                            <div class="col-3"> <i class="fas fa-umbrella"></i> 8% </div>
+                            <div class="col-3"> 18°C | 14°C </div>
+                        </div>
+                    </li>
+                </ul>
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
