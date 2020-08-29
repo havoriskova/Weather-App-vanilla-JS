@@ -29,7 +29,7 @@ headingDate.innerHTML = `${day}, ${hours}:${minutes}`;
 // get a temp
 
 function showWeather(response) {
-  let h1 = document.querySelector("h1");
+  let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
   let temperature = document.querySelector("#number");
   temperature.innerHTML = Math.round(response.data.main.temp);

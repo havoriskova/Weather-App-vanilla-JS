@@ -43,40 +43,35 @@ form {
   border-radius: 10px;
 }
 
-h1 {
-  font-weight: 300;
-  font-size: 40px;
+.heading {
+  font-weight: 400;
+  font-size: 25px;
 }
 
-h2 {
-  font-size: 40px;
+.heading-with-date {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+#description {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+#temperatureLine {
+  font-size: 35px;
 }
 
 sup {
-  color: rgb(92, 139, 209);
   font-size: 22px;
 }
-
-h3 {
-  font-weight: 300;
-  font-size: 20px;
-}
-
-h4 {
-  font-weight: 300;
-  font-size: 20px;
-}
-
-a {
+#celsius,
+#fahrenheit {
   color: rgb(92, 139, 209);
-}
-
-a:hover {
-  text-decoration: none;
 }
 
 .image-weather {
-  font-size: 110px;
+  font-size: 80px;
 }
 
 #barWithOtherInfo {
@@ -88,11 +83,28 @@ a:hover {
 .fa-temperature-low {
   color: blue;
 }
-ul {
-  list-style: none;
-  padding: 0;
+
+.rowContainer {
+  padding: 0 15px;
 }
 
+.day {
+  text-align: center;
+  border-radius: 4px;
+}
+
+.day:hover {
+  transition: all 150ms linear;
+  background-color: #fef9d7;
+}
 footer {
   font-size: small;
+}
+
+a {
+  color: rgb(92, 139, 209);
+}
+
+a:hover {
+  text-decoration: none;
 }
