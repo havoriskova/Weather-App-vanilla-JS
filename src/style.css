@@ -7,30 +7,27 @@
   border: none;
 }
 
-#search-submit {
-  border: 1px solid;
-  border-radius: 4px;
-  background-color: rgb(92, 139, 209);
-  color: #fef9d7;
-  margin: 0 20px;
-}
-
-#search-submit:hover,
-#currentButton:hover {
-  box-shadow: 5px 5px 10px rgb(92, 139, 209);
-  color: rgb(92, 139, 209);
-  background-color: #fef9d7;
-}
-
 form {
   display: inline;
 }
 
-#currentButton {
+#search-submit,
+#current-button {
   border: 1px solid;
   border-radius: 4px;
   background-color: rgb(92, 139, 209);
   color: #fef9d7;
+}
+
+#search-submit {
+  margin: 0 20px;
+}
+
+#search-submit:hover,
+#current-button:hover {
+  box-shadow: 5px 5px 10px rgb(92, 139, 209);
+  color: rgb(92, 139, 209);
+  background-color: #fef9d7;
 }
 
 .card-main-weather {
@@ -39,7 +36,11 @@ form {
 }
 
 .card-body-weather {
-  background-image: linear-gradient(to top, rgb(92, 139, 209) 0%, #fef9d7 100%);
+  background-image: linear-gradient(
+    to top,
+    rgb(132, 160, 202) 0%,
+    #fef9d7 100%
+  );
   border-radius: 10px;
 }
 
@@ -58,12 +59,14 @@ form {
   font-size: 18px;
 }
 
-#temperatureLine {
+#temperature-line {
   font-size: 35px;
 }
 
-sup {
-  font-size: 22px;
+.units {
+  font-size: 17px;
+  position: relative;
+  top: -11px;
 }
 #celsius,
 #fahrenheit {
@@ -71,12 +74,19 @@ sup {
 }
 
 .image-weather {
-  font-size: 80px;
+  font-size: 60px;
 }
 
-#barWithOtherInfo {
+#bar-with-other-info {
   padding: 15px 0 0 0;
+  margin: 0;
+  list-style: none;
 }
+
+.other-info {
+  padding: 0;
+}
+
 .fa-temperature-high {
   color: red;
 }
@@ -84,7 +94,7 @@ sup {
   color: blue;
 }
 
-.rowContainer {
+.row-container {
   padding: 0 15px;
 }
 
@@ -95,7 +105,7 @@ sup {
 
 .day:hover {
   transition: all 150ms linear;
-  background-color: #fef9d7;
+  background-color: white;
 }
 footer {
   font-size: small;

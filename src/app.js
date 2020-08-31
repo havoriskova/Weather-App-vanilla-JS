@@ -31,12 +31,22 @@ headingDate.innerHTML = `${day}, ${hours}:${minutes}`;
 function showWeather(response) {
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
-  let temperature = document.querySelector("#number");
-  temperature.innerHTML = Math.round(response.data.main.temp);
-  let wind = document.querySelector(".wind");
-  wind.innerHTML = Math.round(response.data.wind.speed);
+  let country = document.querySelector("#country");
+  country.innerHTML = response.data.sys.country;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].main;
+  let temperature = document.querySelector("#number");
+  temperature.innerHTML = Math.round(response.data.main.temp);
+  let highTemperature = document.querySelector("#high-temperature");
+  highTemperature.innerHTML = Math.round(response.data.main.temp_max);
+  let lowTemperature = document.querySelector("#low-temperature");
+  lowTemperature.innerHTML = Math.round(response.data.main.temp_min);
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = response.data.main.humidity;
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = Math.round(response.data.wind.speed);
+
+  console.log(response.data);
 }
 
 function search(city) {
@@ -72,5 +82,5 @@ function displayCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let currentLocationButton = document.querySelector("#currentButton");
+let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
