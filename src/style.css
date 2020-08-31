@@ -3,6 +3,10 @@
   max-width: 700px;
 }
 
+body {
+  font-family: "Literata", serif;
+}
+
 .card-weather {
   border: none;
 }
@@ -44,19 +48,19 @@ form {
   border-radius: 10px;
 }
 
-.heading {
+#city,
+#country {
   font-weight: 400;
   font-size: 25px;
 }
 
-.heading-with-date {
+#heading-with-date {
   font-weight: 300;
   font-size: 18px;
 }
 
-#description {
-  font-weight: 300;
-  font-size: 18px;
+#image-weather {
+  font-size: 60px;
 }
 
 #temperature-line {
@@ -73,11 +77,12 @@ form {
   color: rgb(92, 139, 209);
 }
 
-.image-weather {
-  font-size: 60px;
+#description {
+  font-weight: 300;
+  font-size: 18px;
 }
 
-#bar-with-other-info {
+.bar-with-other-info {
   padding: 15px 0 0 0;
   margin: 0;
   list-style: none;
@@ -94,27 +99,32 @@ form {
   color: blue;
 }
 
-.row-container {
-  padding: 0 15px;
+.other-days {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.day {
+.other-day {
   text-align: center;
   border-radius: 4px;
+  padding: 10px 0;
 }
 
-.day:hover {
+.other-day:hover {
   transition: all 150ms linear;
   background-color: white;
 }
+
 footer {
   font-size: small;
 }
 
-a {
+footer a {
   color: rgb(92, 139, 209);
 }
 
-a:hover {
+footer a:hover {
   text-decoration: none;
+  color: rgb(19, 78, 165);
 }

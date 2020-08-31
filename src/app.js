@@ -2,7 +2,7 @@
 
 let now = new Date();
 
-let headingDate = document.querySelector(".heading-with-date");
+let headingDate = document.querySelector("#heading-with-date");
 
 let days = [
   "Sunday",
@@ -47,6 +47,7 @@ function showWeather(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
 
   console.log(response.data);
+  celsiusTemperature = response.data.main.temp;
 }
 
 function search(city) {
@@ -67,6 +68,8 @@ function handleSubmit(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
+search("Amsterdam");
+
 //current location
 
 function searchLocation(position) {
@@ -84,3 +87,25 @@ function displayCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
+
+//from C to F and backwards
+
+let celsiusTemperature = null;
+
+function toTheFahrenheit(event) {
+  event.preventDefault();
+  let currentNumber = document.querySelector("#number");
+  currentNumber.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", toTheFahrenheit);
+
+function toTheCelsius(event) {
+  event.preventDefault();
+  let currentNumber = document.querySelector("#number");
+  currentNumber.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", toTheCelsius);
