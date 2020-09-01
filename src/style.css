@@ -54,16 +54,21 @@ form {
   font-size: 25px;
 }
 
-#heading-with-date {
+.heading-with-date,
+#description {
   font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
+}
+
+#description:first-letter {
+  text-transform: capitalize;
 }
 
 #image-weather {
-  font-size: 60px;
+  font-size: 57px;
 }
 
-#temperature-line {
+#number {
   font-size: 35px;
 }
 
@@ -75,11 +80,6 @@ form {
 #celsius,
 #fahrenheit {
   color: rgb(92, 139, 209);
-}
-
-#description {
-  font-weight: 300;
-  font-size: 18px;
 }
 
 .bar-with-other-info {
@@ -116,6 +116,11 @@ form {
   background-color: white;
 }
 
+.other-day i {
+  display: block;
+  margin: 5px auto;
+}
+
 footer {
   font-size: small;
 }
@@ -124,7 +129,8 @@ footer a {
   color: rgb(92, 139, 209);
 }
 
-footer a:hover {
+footer a:hover,
+footer a:visited {
   text-decoration: none;
   color: rgb(19, 78, 165);
 }

@@ -1,32 +1,32 @@
-// get a current date
+// funkcion to display the updated time - it´s called from the function showWeather
 
-let now = new Date();
+function displayUpdateTime(timestamp) {
+  let updatedDate = new Date(timestamp);
 
-let headingDate = document.querySelector("#heading-with-date");
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+  let day = days[updatedDate.getDay()];
+  let hours = updatedDate.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
 
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
+  let minutes = updatedDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day}, ${hours}:${minutes}`;
 }
 
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-headingDate.innerHTML = `${day}, ${hours}:${minutes}`;
-
-// get a temp
+// get a temp and other information + set Amsterdam as default city
 
 function showWeather(response) {
   let h1 = document.querySelector("#city");
@@ -34,7 +34,7 @@ function showWeather(response) {
   let country = document.querySelector("#country");
   country.innerHTML = response.data.sys.country;
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].main;
+  description.innerHTML = response.data.weather[0].description;
   let temperature = document.querySelector("#number");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let highTemperature = document.querySelector("#high-temperature");
@@ -45,6 +45,9 @@ function showWeather(response) {
   humidity.innerHTML = response.data.main.humidity;
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed);
+
+  let updatedTime = document.querySelector("#time");
+  updatedTime.innerHTML = displayUpdateTime(response.data.dt * 1000);
 
   console.log(response.data);
   celsiusTemperature = response.data.main.temp;
@@ -70,7 +73,7 @@ searchForm.addEventListener("submit", handleSubmit);
 
 search("Amsterdam");
 
-//current location
+//get current location and put it into function showWeather
 
 function searchLocation(position) {
   let apiKey = "6f8eb5e9009796b8d457f007bc62c74f";

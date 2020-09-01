@@ -33,16 +33,18 @@
               id="input-city-form"
             />
 
-            <input type="submit" id="search-submit" value="Search" />
+            <input type="submit" id="search-submit" value="🔍 Search" />
           </form>
 
-          <button id="current-button">Current</button>
+          <button id="current-button">🚩 Current location</button>
 
           <div class="card card-main-weather">
             <div class="card-body card-body-main-weather">
               <span id="city"> Prag </span>,
               <span id="country">Czechia</span>
-              <div id="heading-with-date">date</div>
+              <div class="heading-with-date">
+                Last updated: <span id="time"></span>
+              </div>
 
               <div class="row">
                 <div class="col-6">
@@ -52,13 +54,12 @@
                 </div>
 
                 <div class="col-6">
-                  <div id="temperature-line">
-                    <span id="number">19</span
-                    ><span class="units"
-                      ><a href="#" id="celsius">°C </a>|
-                      <a href="#" id="fahrenheit">°F </a>
-                    </span>
-                  </div>
+                  <span id="number">19</span
+                  ><span class="units"
+                    ><a href="#" id="celsius">°C </a>|
+                    <a href="#" id="fahrenheit">°F </a>
+                  </span>
+
                   <div id="description">partly cloudy</div>
                 </div>
               </div>
@@ -89,31 +90,36 @@
             <li class="col other-day">
               <div id="day-one">Mon</div>
               <i class="fas fa-cloud-showers-heavy"></i>
-              <div id="day-one-temperature">19°C</div>
+              <span id="day-one-temperature">20</span>
+              °C
             </li>
 
             <li class="col other-day">
               <div id="day-two">Tue</div>
               <i class="fas fa-sun"></i>
-              <div id="day-two-temperature">21°C</div>
+              <span id="day-two-temperature">21</span>
+              °C
             </li>
 
             <li class="col other-day">
               <div id="day-three">Wed</div>
               <i class="fas fa-cloud-sun"></i>
-              <div id="day-three-temperature">23°C</div>
+              <span id="day-three-temperature">23</span>
+              °C
             </li>
 
             <li class="col other-day">
               <div id="day-four">Thu</div>
               <i class="fas fa-sun"></i>
-              <div id="day-four-temperature">19°C</div>
+              <span id="day-four-temperature">19</span>
+              °C
             </li>
 
             <li class="col other-day">
               <div id="day-five">Fri</div>
               <i class="fas fa-cloud"></i>
-              <div id="day-five-temperature">18°C</div>
+              <span id="day-five-temperature">18</span>
+              °C
             </li>
           </ul>
         </div>
