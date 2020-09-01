@@ -46,6 +46,13 @@ function showWeather(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed);
 
+  let mainImageWeather = document.querySelector("#image-weather");
+  mainImageWeather.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  mainImageWeather.setAttribute("alt", response.data.weather[0].description);
+
   let updatedTime = document.querySelector("#time");
   updatedTime.innerHTML = displayUpdateTime(response.data.dt * 1000);
 
