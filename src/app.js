@@ -49,8 +49,9 @@ function showWeather(response) {
   let updatedTime = document.querySelector("#time");
   updatedTime.innerHTML = displayUpdateTime(response.data.dt * 1000);
 
-  console.log(response.data);
   celsiusTemperature = response.data.main.temp;
+
+  console.log(response.data);
 }
 
 function search(city) {
@@ -91,24 +92,28 @@ function displayCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
 
-//from C to F and backwards
+//from C to F and backwards + by default has C class active
 
 let celsiusTemperature = null;
 
 function toTheFahrenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let currentNumber = document.querySelector("#number");
   currentNumber.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 }
 
-let fahrenheitLink = document.querySelector("#fahrenheit");
+let fahrenheitLink = document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", toTheFahrenheit);
 
 function toTheCelsius(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let currentNumber = document.querySelector("#number");
   currentNumber.innerHTML = Math.round(celsiusTemperature);
 }
 
-let celsiusLink = document.querySelector("#celsius");
+let celsiusLink = document.querySelector(".celsius");
 celsiusLink.addEventListener("click", toTheCelsius);

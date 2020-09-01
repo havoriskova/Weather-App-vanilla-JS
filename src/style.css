@@ -77,9 +77,19 @@ form {
   position: relative;
   top: -11px;
 }
-#celsius,
-#fahrenheit {
+
+.celsius,
+.fahrenheit {
   color: rgb(92, 139, 209);
+}
+
+.active {
+  color: black;
+}
+.active:hover {
+  text-decoration: none;
+  cursor: default;
+  color: black;
 }
 
 .bar-with-other-info {
@@ -129,8 +139,7 @@ footer a {
   color: rgb(92, 139, 209);
 }
 
-footer a:hover,
-footer a:visited {
+footer a:hover {
   text-decoration: none;
   color: rgb(19, 78, 165);
 }
