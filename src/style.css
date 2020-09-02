@@ -65,7 +65,7 @@ form {
 }
 
 #image-weather {
-  font-size: 57px;
+  width: 100px;
 }
 
 #number {
@@ -109,26 +109,28 @@ form {
   color: blue;
 }
 
-.other-days {
+.other-hours {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.other-day {
+.other-hour {
   text-align: center;
   border-radius: 4px;
   padding: 10px 0;
+  font-size: 16px;
 }
 
-.other-day:hover {
+.other-hour:hover {
   transition: all 150ms linear;
   background-color: white;
 }
 
-.other-day i {
+.other-hour img {
   display: block;
-  margin: 5px auto;
+  margin: 0 auto;
+  width: 60px;
 }
 
 footer {

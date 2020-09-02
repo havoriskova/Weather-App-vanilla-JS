@@ -68,6 +68,10 @@ function search(city) {
   let apiUrlWeather = `${urlEndPoint}?q=${city}&units=${units}&appid=${apiKey}`;
 
   axios.get(apiUrlWeather).then(showWeather);
+
+  // for function forecast:
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -86,9 +90,13 @@ search("Amsterdam");
 function searchLocation(position) {
   let apiKey = "6f8eb5e9009796b8d457f007bc62c74f";
   let units = "metric";
-  let urlEndPoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${urlEndPoint}?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&appid=${apiKey}`;
+  let urlEndPoint = "https://api.openweathermap.org/data/2.5/";
+  let apiUrl = `${urlEndPoint}weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showWeather);
+
+  // for function forecast:
+  let apiUrlForecast = `${urlEndPoint}forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 function displayCurrentLocation(event) {
@@ -124,3 +132,41 @@ function toTheCelsius(event) {
 
 let celsiusLink = document.querySelector(".celsius");
 celsiusLink.addEventListener("click", toTheCelsius);
+
+//function Forecast
+
+function displayForecast(response) {
+  console.log(response.data);
+
+  let forecastEl = document.querySelector("#other-hours");
+  forecastEl.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastEl.innerHTML += ` 
+    <div class="col other-hour">
+      <div>${formatHours(forecast.dt * 1000)}</div>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast.weather[0].icon
+      }@2x.png"/>
+       ${Math.round((forecast.main.temp_max + forecast.main.temp_min) / 2)}  °C 
+    </div>`;
+  }
+}
+
+// function for forecast hours - then I can replace part of the displayUpdateTime function with this function
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
