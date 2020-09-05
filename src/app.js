@@ -77,7 +77,7 @@ function search(city) {
 
   // for function forecast:
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrlForecast).then(displayForecast);
+  axios.get(apiUrlForecast).then(showForecast);
 }
 
 function handleSubmit(event) {
@@ -102,7 +102,7 @@ function searchLocation(position) {
 
   // for function forecast:
   let apiUrlForecast = `${urlEndPoint}forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrlForecast).then(displayForecast);
+  axios.get(apiUrlForecast).then(showForecast);
 }
 
 function displayCurrentLocation(event) {
@@ -116,6 +116,7 @@ currentLocationButton.addEventListener("click", displayCurrentLocation);
 //from C to F and backwards + by default has C class active
 
 let celsiusTemperature = null;
+let currentTemp = [0, 0, 0, 0, 0];
 
 function toTheFahrenheit(event) {
   event.preventDefault();
@@ -126,17 +127,18 @@ function toTheFahrenheit(event) {
 
   //for the forecast - changing the symbol and changing the temp
 
-  let symbol = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
-
-  symbol.forEach(function (element) {
-    element.innerHTML = "F";
+  let symbols = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
+  symbols.forEach(function (symbol) {
+    symbol.innerHTML = "F";
   });
 
-  let elements = document.querySelectorAll(".other-hour-temp"); // tímto si vytvářím array ze všech teplot !
-  elements.forEach(function (element) {
-    let currentTemp = element.innerHTML;
-    element.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
-  });
+  // tímto si vytvářím array ze všech teplot !
+
+  for (let index = 0; index < 5; index++) {
+    let placeForTemp = document.querySelectorAll(".other-hour-temp");
+    let oneTemp = currentTemp[index];
+    placeForTemp[index].innerHTML = `${Math.round((oneTemp * 9) / 5 + 32)}`;
+  }
 }
 
 let fahrenheitLink = document.querySelector(".fahrenheit");
@@ -151,18 +153,17 @@ function toTheCelsius(event) {
 
   // for the forecast - changing the symbol and changing the temp
 
-  let symbol = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
-
-  symbol.forEach(function (element) {
-    element.innerHTML = "C";
+  let symbols = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
+  symbols.forEach(function (symbol) {
+    symbol.innerHTML = "C";
   });
 
-  let elements = document.querySelectorAll(".other-hour-temp");
-
-  elements.forEach(function (element) {
-    let currentTemp = element.innerHTML;
-    element.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
-  });
+  // místo pro smyčku na to, že for Each currentTemp platí, že je rovná cunrrentTemp:
+  for (let index = 0; index < 5; index++) {
+    let placeForTemp = document.querySelectorAll(".other-hour-temp");
+    let oneTemp = currentTemp[index];
+    placeForTemp[index].innerHTML = oneTemp;
+  }
 }
 
 let celsiusLink = document.querySelector(".celsius");
@@ -170,12 +171,40 @@ celsiusLink.addEventListener("click", toTheCelsius);
 
 //function Forecast
 
-function displayForecast(response) {
+function showForecast(response) {
   console.log(response.data);
 
   let forecastElement = document.querySelector("#other-hours");
   forecastElement.innerHTML = null;
   let forecast = null;
+
+  currentTemp = [
+    Math.round(
+      (response.data.list[0].main.temp_max +
+        response.data.list[0].main.temp_min) /
+        2
+    ),
+    Math.round(
+      (response.data.list[1].main.temp_max +
+        response.data.list[1].main.temp_min) /
+        2
+    ),
+    Math.round(
+      (response.data.list[2].main.temp_max +
+        response.data.list[2].main.temp_min) /
+        2
+    ),
+    Math.round(
+      (response.data.list[3].main.temp_max +
+        response.data.list[3].main.temp_min) /
+        2
+    ),
+    Math.round(
+      (response.data.list[4].main.temp_max +
+        response.data.list[4].main.temp_min) /
+        2
+    ),
+  ];
 
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
