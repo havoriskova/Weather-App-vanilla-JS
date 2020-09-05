@@ -14,16 +14,22 @@ function displayUpdateTime(timestamp) {
   ];
 
   let day = days[updatedDate.getDay()];
-  let hours = updatedDate.getHours();
+
+  return `${day}, ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
 
-  let minutes = updatedDate.getMinutes();
+  let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${day}, ${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
 
 // get a temp and other information + set Amsterdam as default city
@@ -149,24 +155,10 @@ function displayForecast(response) {
       <div>${formatHours(forecast.dt * 1000)}</div>
       <img src="http://openweathermap.org/img/wn/${
         forecast.weather[0].icon
-      }@2x.png"/>
-       ${Math.round((forecast.main.temp_max + forecast.main.temp_min) / 2)}  °C 
+      }@2x.png" alt="${forecast.weather[0].description}"/>
+       <span id= "other-hour-temp">${Math.round(
+         (forecast.main.temp_max + forecast.main.temp_min) / 2
+       )}</span>  °
     </div>`;
   }
-}
-
-// function for forecast hours - then I can replace part of the displayUpdateTime function with this function
-
-function formatHours(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  return `${hours}:${minutes}`;
 }
