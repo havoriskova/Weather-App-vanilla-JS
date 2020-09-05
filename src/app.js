@@ -43,10 +43,10 @@ function showWeather(response) {
   description.innerHTML = response.data.weather[0].description;
   let temperature = document.querySelector("#number");
   temperature.innerHTML = Math.round(response.data.main.temp);
-  let highTemperature = document.querySelector("#high-temperature");
-  highTemperature.innerHTML = Math.round(response.data.main.temp_max);
-  let lowTemperature = document.querySelector("#low-temperature");
-  lowTemperature.innerHTML = Math.round(response.data.main.temp_min);
+  let sunrise = document.querySelector("#sunrise");
+  sunrise.innerHTML = formatHours(response.data.sys.sunrise * 1000);
+  let sunset = document.querySelector("#sunset");
+  sunset.innerHTML = formatHours(response.data.sys.sunset * 1000);
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
   let wind = document.querySelector("#wind");
