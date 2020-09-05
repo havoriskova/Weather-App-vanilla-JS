@@ -123,6 +123,20 @@ function toTheFahrenheit(event) {
   fahrenheitLink.classList.add("active");
   let currentNumber = document.querySelector("#number");
   currentNumber.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+
+  //for the forecast - changing the symbol and changing the temp
+
+  let symbol = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
+
+  symbol.forEach(function (element) {
+    element.innerHTML = "F";
+  });
+
+  let elements = document.querySelectorAll(".other-hour-temp"); // tímto si vytvářím array ze všech teplot !
+  elements.forEach(function (element) {
+    let currentTemp = element.innerHTML;
+    element.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  });
 }
 
 let fahrenheitLink = document.querySelector(".fahrenheit");
@@ -134,6 +148,21 @@ function toTheCelsius(event) {
   fahrenheitLink.classList.remove("active");
   let currentNumber = document.querySelector("#number");
   currentNumber.innerHTML = Math.round(celsiusTemperature);
+
+  // for the forecast - changing the symbol and changing the temp
+
+  let symbol = document.querySelectorAll(".symbol-temp"); // tímto si vytvářím array ze všech symbolů - ač je jen jeden..
+
+  symbol.forEach(function (element) {
+    element.innerHTML = "C";
+  });
+
+  let elements = document.querySelectorAll(".other-hour-temp");
+
+  elements.forEach(function (element) {
+    let currentTemp = element.innerHTML;
+    element.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
+  });
 }
 
 let celsiusLink = document.querySelector(".celsius");
@@ -144,21 +173,21 @@ celsiusLink.addEventListener("click", toTheCelsius);
 function displayForecast(response) {
   console.log(response.data);
 
-  let forecastEl = document.querySelector("#other-hours");
-  forecastEl.innerHTML = null;
+  let forecastElement = document.querySelector("#other-hours");
+  forecastElement.innerHTML = null;
   let forecast = null;
 
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
-    forecastEl.innerHTML += ` 
+    forecastElement.innerHTML += ` 
     <div class="col other-hour">
       <div>${formatHours(forecast.dt * 1000)}</div>
       <img src="http://openweathermap.org/img/wn/${
         forecast.weather[0].icon
       }@2x.png" alt="${forecast.weather[0].description}"/>
-       <span id= "other-hour-temp">${Math.round(
+       <span class= "other-hour-temp">${Math.round(
          (forecast.main.temp_max + forecast.main.temp_min) / 2
-       )}</span>  °
+       )}</span>  ° <span class="symbol-temp"> C </span>
     </div>`;
   }
 }
