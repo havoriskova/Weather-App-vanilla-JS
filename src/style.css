@@ -92,21 +92,27 @@ form {
   color: black;
 }
 
+/*added flexbox */
+
 .bar-with-other-info {
   padding: 15px 0 0 0;
   margin: 0;
   list-style: none;
+  display: flex;
 }
 
 .other-info {
   padding: 0;
+  display: inline;
+  flex: 1;
+  align-self: baseline;
 }
 
 .sun-sunrise,
 .sun-sunset {
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 7px;
+  top: 8px;
 }
 
 .other-hours {

@@ -65,6 +65,7 @@ function showWeather(response) {
   celsiusTemperature = response.data.main.temp;
 
   console.log(response.data);
+  classTempButton();
 }
 
 function search(city) {
@@ -219,4 +220,14 @@ function showForecast(response) {
        )}</span>  ° <span class="symbol-temp"> C </span>
     </div>`;
   }
+
+  classTempButton();
+}
+
+// because without this function when you press F button and then change the city, the F button is still active/black
+// and you need always the F button inactive/blue when there is a new city displayed
+
+function classTempButton() {
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 }
