@@ -64,7 +64,6 @@ function showWeather(response) {
 
   celsiusTemperature = response.data.main.temp;
 
-  console.log(response.data);
   classTempButton();
 }
 
@@ -173,8 +172,6 @@ celsiusLink.addEventListener("click", toTheCelsius);
 //function Forecast
 
 function showForecast(response) {
-  console.log(response.data);
-
   let forecastElement = document.querySelector("#other-hours");
   forecastElement.innerHTML = null;
   let forecast = null;
