@@ -92,8 +92,6 @@ form {
   color: black;
 }
 
-/*added flexbox */
-
 .bar-with-other-info {
   padding: 15px 0 0 0;
   margin: 0;
@@ -161,5 +159,8 @@ footer a:hover {
   }
   #search-submit {
     margin: 0;
+  }
+  footer {
+    font-size: 75%;
   }
 }
