@@ -159,4 +159,7 @@ footer a:hover {
     min-width: 680px;
     font-size: 120%;
   }
+  #search-submit {
+    margin: 0;
+  }
 }
