@@ -11,6 +11,15 @@ body {
   border: none;
 }
 
+.card-body-weather {
+  background-image: linear-gradient(
+    to top,
+    rgb(132, 160, 202) 0%,
+    #fef9d7 100%
+  );
+  border-radius: 10px;
+}
+
 form {
   display: inline;
 }
@@ -37,15 +46,6 @@ form {
 .card-main-weather {
   margin: 20px auto;
   border: none;
-}
-
-.card-body-weather {
-  background-image: linear-gradient(
-    to top,
-    rgb(132, 160, 202) 0%,
-    #fef9d7 100%
-  );
-  border-radius: 10px;
 }
 
 #city,
@@ -150,4 +150,13 @@ footer a {
 footer a:hover {
   text-decoration: none;
   color: rgb(19, 78, 165);
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 10px 1px;
+    max-width: 100%;
+    min-width: 680px;
+    font-size: 120%;
+  }
 }
