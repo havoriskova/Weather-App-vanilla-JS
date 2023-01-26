@@ -27,6 +27,13 @@
     <div class="container">
       <div class="card card-weather">
         <div class="card-body card-body-weather">
+          <!----->
+          <div class="form-group fg--search">
+            <input type="text" class="input" placeholder="search" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
+          <!----->
+
           <form id="search-form">
             <input
               type="text"
@@ -34,11 +41,25 @@
               autofocus="on"
               id="input-city-form"
             />
-
-            <input type="submit" id="search-submit" value="🔍 Search" />
+            <input type="submit" id="search-submit" value="🔍" />
           </form>
 
-          <button id="current-button">🚩 Current location</button>
+          <button id="current-button">
+            <!---SVG má přímo v souřadnicích obrázek-->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-geo-alt-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+              />
+            </svg>
+            Current location
+          </button>
 
           <div class="card card-main-weather">
             <div class="card-body card-body-main-weather">
@@ -86,6 +107,11 @@
 
           <div class="row other-hours" id="other-hours">
             <!--now it´s in the JS in function displayForecast-->
+            <div class="spinner-border" role="status">
+              <!--SPINNER, ALE
+            DĚLÁ TO NĚJAKÝ BOMBY-->
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </div>
       </div>

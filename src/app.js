@@ -21,15 +21,15 @@ function displayUpdateTime(timestamp) {
 function formatHours(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+  let amORpm = hours < 12 ? "a.m." : "p.m."; // midnight in 12-hour clock is 12:00 am, noon is 12:00 pm
+  hours = hours % 12 || 12; //  % = remainder operator.  || 12 - if the remaining is 0, it will be 12.
+
 
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}`;
+  return `${hours}:${minutes} ${amORpm}`;
 }
 
 // get a temp and other information + set Amsterdam as default city

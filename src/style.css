@@ -20,11 +20,72 @@ body {
   border-radius: 10px;
 }
 
-form {
-  display: inline;
+/*----------------------*/
+
+.fg--search {
+  background-color: red;
+  position: relative;
+  width: 300px;
 }
 
-#search-submit,
+.fg--search input {
+  width: 100%;
+  padding: 20px 60px 20px 20px; /*bingo! padding vpravo!*/
+  display: block;
+}
+
+.fg--search button {
+  background: blueviolet;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 18px 20px;
+  z-index: 2;
+}
+
+.fg--search input:focus + button .fa-search {
+  color: red;
+}
+/*----------------*/
+#search-form {
+  display: inline;
+  position: relative;
+  width: 30%;
+  margin-right: 3%;
+  box-sizing: border-box;
+}
+
+#search-form input[type="text"] {
+  /*narvat do inputu ikonku lupy / magnifying glass */
+  background-color: #fef9d7;
+  border: 2px solid red; /*prozatimně, ať to jde vidět*/
+  border-radius: 10em;
+
+  padding: 5px 60px 5px 10px;
+}
+
+#search-submit {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  right: 10px;
+  z-index: 2;
+  display: inline-block;
+  border: none;
+  padding-right: 10px;
+}
+
+#search-submit input:active {
+  /*dát box-shadow na input, když je zmáčknutej!!*/
+  box-shadow: 0 0 2px 2px rgb(139, 178, 238);
+}
+
+/*---------------------*/
+
 #current-button {
   border: 1px solid;
   border-radius: 4px;
@@ -32,13 +93,8 @@ form {
   color: #fef9d7;
 }
 
-#search-submit {
-  margin: 0 20px;
-}
-
-#search-submit:hover,
 #current-button:hover {
-  box-shadow: 5px 5px 10px rgb(92, 139, 209);
+  box-shadow: 0 0 2px 2px rgb(139, 178, 238);
   color: rgb(92, 139, 209);
   background-color: #fef9d7;
 }
@@ -157,9 +213,7 @@ footer a:hover {
     min-width: 680px;
     font-size: 120%;
   }
-  #search-submit {
-    margin: 0;
-  }
+
   footer {
     font-size: 75%;
   }
